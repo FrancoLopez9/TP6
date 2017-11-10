@@ -8,6 +8,7 @@ namespace Ejercicio02
 {
     class AccountDTO
     {
+        //
         public int Id { get; set; }
         public String Name { get; set; }
         public double Overdraftlimit { get; set; }
