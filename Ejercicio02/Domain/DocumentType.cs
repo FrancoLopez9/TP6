@@ -4,8 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Ejercicio02
-{
+namespace Ejercicio02.Domain
+{   
+    /// <summary>
+    /// Clase que representa el tipo de documento
+    /// </summary>
     public enum DocumentType
     {
         DNI,CUIL,LE,LC
