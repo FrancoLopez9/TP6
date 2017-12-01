@@ -23,7 +23,7 @@ namespace Test
             Bank banco = new Bank();
             banco.OppenAccount(cliente1, "Caja de Ahorros", 1500);
 
-            banco.GetClientAccounts(1);
+            //banco.GetClientAccounts(1);
 
 
 

@@ -29,19 +29,19 @@ namespace Ejercicio02.DAL.EntityFramework
         /// </summary>
         public DbSet<AccountMovement> AccountMovements { get; set; }
 
-        public AccountManagerDbContext() : base("AccountManagerContext")
+        public AccountManagerDbContext() : base("AccountManagerDbContext")
         {
             //Se establece la estrategia personalizada de inicialización de la BBDD.
             Database.SetInitializer<AccountManagerDbContext>(new DatabaseInitializationStrategy());
         }
 
-        //protected override void OnModelCreating(DbModelBuilder pModelBuilder)
-        //{
-        //    pModelBuilder.Configurations.Add(new ClientMap());
-        //    pModelBuilder.Configurations.Add(new AccountMap());
-        //    pModelBuilder.Configurations.Add(new AccountMovementMap());
+        protected override void OnModelCreating(DbModelBuilder pModelBuilder)
+        {
+            pModelBuilder.Configurations.Add(new ClientMap());
+            pModelBuilder.Configurations.Add(new AccountMap());
+            pModelBuilder.Configurations.Add(new AccountMovementMap());
 
-        //    base.OnModelCreating(pModelBuilder);
-        //}
+            base.OnModelCreating(pModelBuilder);
+        }
     }
 }

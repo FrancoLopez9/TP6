@@ -21,8 +21,8 @@ namespace Ejercicio02
         /// <param name="pClientId">Id del cliente</param>
         /// <returns>Cuenta de un cliente</returns>
         public IEnumerable<AccountDTO> GetClientAccounts(int pClientId)
-            {
-                List<AccountDTO> mAccounts = new List<AccountDTO>();
+        {
+            List<AccountDTO> mAccounts = new List<AccountDTO>();
 
             using (var bUnitOfWork = new UnitOfWork(new AccountManagerDbContext()))
             {
@@ -48,8 +48,8 @@ namespace Ejercicio02
             // Se devuelven las cuentas
             return mAccounts;
 
-      
         }
+
         /// <summary>
         /// Obtiene los movimientos de la cuenta
         /// </summary>
@@ -87,25 +87,24 @@ namespace Ejercicio02
         /// <summary>
         /// Apertura de la cuenta del cliente
         /// </summary>
-        /// <param name="pClient">Cliente</param>
+        /// <param name="pClient">Id del Cliente</param>
         /// <param name="pNombre">Nombre de la cuenta</param>
         /// <param name="pOverdraftLimit">Limite del Descubierto</param>
-        public void OppenAccount(Client pClient, string pName, double pOverDraftLimit)
+        public void OppenAccount(int pClientId, string pName, double pOverDraftLimit)
         {
             using (var bUnitOfWork = new UnitOfWork(new AccountManagerDbContext()))
             {
-                var mClient = bUnitOfWork.ClientRepository.Get(pClient.Id);
+                var mClient = bUnitOfWork.ClientRepository.Get(pClientId);
 
                 mClient.Accounts.Add(new Account
                 {
-                    Client = pClient,
+                    Client = mClient,
                     Name = pName,
                     OverDraftLimit = pOverDraftLimit
                 });
                 bUnitOfWork.Complete();
             }
         }
-                
     
 
         /// <summary>
@@ -139,7 +138,7 @@ namespace Ejercicio02
             List<AccountDTO> mAccounts = new List<AccountDTO>();
             using (UnitOfWork mUnit = new UnitOfWork(new AccountManagerDbContext()))
             {
-                foreach (Account mAccount in mUnit.AccountRepository.GetOverdrawnAccounts())
+                foreach (var mAccount in mUnit.AccountRepository.GetOverdrawnAccounts())
                 {
                     mAccounts.Add(new AccountDTO
                     {

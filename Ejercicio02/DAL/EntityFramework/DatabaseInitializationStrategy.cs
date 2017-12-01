@@ -115,6 +115,81 @@ namespace Ejercicio02.DAL.EntityFramework
                 }
             });
 
+            pContext.Accounts.Add(new Account
+            {
+                Id = 1,
+                Name = "Caja Ahorros",
+                OverDraftLimit = 1000,
+                Movements = new List<AccountMovement>
+                {
+                   new AccountMovement
+                   {
+                      Date = DateTime.Now.AddDays(-10),
+                      Description = "Acreditación de sueldo",
+                      Amount = 40000
+                   },
+                   new AccountMovement
+                   {
+                      Date = DateTime.Now.AddDays(-5),
+                      Description = "Pago de tarjeta de crédito",
+                      Amount = -13200.5
+                   },
+                   new AccountMovement
+                   {
+                      Date = DateTime.Now.AddDays(-3),
+                      Description = "Pago de seguro de vida",
+                      Amount = -150
+                   },
+                   new AccountMovement
+                   {
+                      Date = DateTime.Now.AddDays(-3),
+                      Description = "Pago de seguro automotor",
+                      Amount = -1500
+                   },
+                   new AccountMovement
+                   {
+                      Date = DateTime.Now.AddDays(-1),
+                      Description = "Devolución del IVA",
+                      Amount = 85
+                   },
+                   new AccountMovement
+                   {
+                      Date = DateTime.Now,
+                      Description = "Transferencia bancaria",
+                      Amount = -5000
+                   }
+                }
+            });
+
+            pContext.Accounts.Add(new Account
+            {
+                Id = 2,
+                Name = "Caja Ahorros",
+                OverDraftLimit = 2000,
+                Movements = new List<AccountMovement>
+                        {
+                            new AccountMovement
+                            {
+                                Date = DateTime.Now.AddDays(-10),
+                                Description = "Acreditación de sueldo",
+                                Amount = 35000
+                            },
+                            new AccountMovement
+                            {
+                                Date = DateTime.Now.AddDays(-5),
+                                Description = "Pago de tarjeta de crédito",
+                                Amount = -7570
+                            }
+                        }
+            });
+
+            pContext.Accounts.Add(new Account
+            {
+                Id = 3,
+                Name = "Cuenta Corriente",
+                OverDraftLimit = 5000
+            });
+
             base.Seed(pContext);
         }
 

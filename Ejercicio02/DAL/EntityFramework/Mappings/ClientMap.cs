@@ -49,10 +49,10 @@ namespace Ejercicio02.DAL.EntityFramework.Mappings
                 .HasMaxLength(20);
 
             // Se crea un índice único por tipo y número de documento.
-            //this.HasIndex("IX_Document",
-            //    IndexOptions.Unique,
-            //    pEntity => pEntity.Property(pClient => pClient.Document.Type),
-            //    pEntity => pEntity.Property(pClient => pClient.Document.Number));
+            this.HasIndex("IX_Document", 
+                IndexOptions.Unique,
+                pEntity => pEntity.Property(pClient => pClient.Document.Type),
+                pEntity => pEntity.Property(pClient => pClient.Document.Number));
 
             // Se establece la relación de uno a muchos entre las entidades Client y Account, habilitando la 
             // navegación tanto desde la instancia de Client hacia sus instancias de Account, como de Account
